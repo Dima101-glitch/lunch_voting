@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}
+	Login
+{% endblock %}
+
+
+{% block css %}
+    <style>
+        #frm {
+            margin-top: 75px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+    <div id="frm">
+        <h1>Login</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+        <a href="{% url 'interface:register' %}">You haven't an account? Register!</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}
+	Menus
+{% endblock %}
+
+
+{% block css %}
+    <style>
+        .menu-container {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+
+        .menu-item {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .menu-key {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .choose-btn {
+            display: inline-block;
+            margin-top: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Available Menus</h1>
+        {% for menu in all_menus %}
+            <div class="menu-container">
+                <div class="d-flex">
+                    {% for key, value in menu.items.items %}
+                        <p class="menu-key">{{ key }}</p>
+                        <p class="m-2 mt-1 mb-0"> : </p>
+                        <p class="menu-item">{{ value }}</p>
+                    {% endfor %}
+                </div>
+                <a href="{% url 'interface:make_vote' menu.id %}" class="btn btn-primary choose-btn">Choose this one</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

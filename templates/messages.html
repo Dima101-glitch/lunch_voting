@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}
+    Message
+{% endblock %}
+
+
+{% block css %}
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .message {
+            padding: 10px 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <button type="button" class="btn btn-primary" onclick="window.history.back();">Back</button>
+        <div class="mt-4">
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == "success" %}
+                        <div class="message alert alert-success">
+                            <strong>Success:</strong> {{ message }}
+                        </div>
+                    {% elif message.tags == "error" %}
+                        <div class="message alert alert-danger">
+                            <strong>Error:</strong> {{ message }}
+                        </div>
+                    {% else %}
+                        <div class="message alert alert-secondary">
+                            <strong>Info:</strong> {{ message }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <h1 class="text-danger">You have no messages!</h1>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

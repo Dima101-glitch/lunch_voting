@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}
+	Register
+{% endblock %}
+
+
+{% block css %}
+	
+{% endblock %}
+
+
+{% block body %}
+    <h1>Registration</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+    <a href="{% url 'interface:login' %}">Have an account? Login!</a>
+{% endblock %}
